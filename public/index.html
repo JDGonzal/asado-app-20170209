@@ -5,15 +5,31 @@
     <title>Bienvenidos a mi Asao App</title>
   </head>
   <body>
-      <h1>Bienvenidos a mi Asao App</h1>
+		<h1>Bienvenidos a mi Asao App</h1>
 
-      <!-- Angular -->
-      <script src="bower_components/angular/angular.min.js"></script>
+		<!-- Angular -->
+		<script src="bower_components/angular/angular.min.js"></script>
+		<!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script-->
 
-      <!-- Firebase -->
-      <script src="bower_components/firebase/firebase.js"></script>
-
-      <!-- AngularFire -->
-      <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+		<!-- Firebase -->
+		<script src="bower_components/firebase/firebase.js"></script>
+		<!--script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script-->
+		
+		<!-- AngularFire -->
+		<script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+		<!--script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script-->
+		
+		<script>
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyBOVFJHF7dzT5jNZEo6Bx83bSbWMM4Pm3A",
+				authDomain: "asado-app-20170209.firebaseapp.com",
+				databaseURL: "https://asado-app-20170209.firebaseio.com",
+				projectId: "asado-app-20170209",
+				storageBucket: "asado-app-20170209.appspot.com",
+				messagingSenderId: "477424762665"
+			};
+			firebase.initializeApp(config);
+		</script>
   </body>
 </html>
