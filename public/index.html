@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   </head>
   <body>
-		<div ng-controller="mainCtrl">
-        <md-button class="md-raised md-primary">Nuevo Asado</md-button>
-        <md-button class="md-raised md-warn">Ver Asados</md-button>        
-      </div>
+		<div ng-controller="mainCtrl as ctrl">
+			<md-button class="md-raised md-primary" ng-click="ctrl.nuevoAsado()">Nuevo Asado</md-button>
+			<md-button class="md-raised md-warn">Ver Asados</md-button>        
+    </div>
 
 		<!-- Angular -->
 		<script src="bower_components/angular/angular.min.js"></script>
