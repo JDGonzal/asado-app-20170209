@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html ng-app="asaoApp">
+	
   <head>
     <meta charset="utf-8">
     <title>Bienvenidos a mi Asao App</title>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   </head>
+	
   <body>
 		<div ng-controller="mainCtrl as ctrl">
 			<md-button class="md-raised md-primary" ng-click="ctrl.nuevoAsado()">Nuevo Asado</md-button>
-			<md-button class="md-raised md-warn">Ver Asados</md-button>        
+			<md-button class="md-raised md-warn" ng-show="!ctrl.isAsadosDisplayed" ng-click="ctrl.verAsados()">Ver Asados</md-button>   
+			<md-button class="md-raised md-warn" ng-show="ctrl.isAsadosDisplayed" ng-click="ctrl.isAsadosDisplayed = false">Ocultar Asados</md-button>
+			
+			<!-- Listado de Asados -->
+			<md-list ng-if="ctrl.isAsadosDisplayed">
+				<md-list-item ng-repeat="asado in ctrl.asadosArray" class="secondary-button-padding" ng-click="">
+					<p> {{ asado.nombre }} </p>
+					<md-button class="md-secondary" ng-click="">Detalles >></md-button>
+					<md-divider></md-divider>
+				</md-list-item>
+			</md-list>
+    	<!-- Fin listado de Asados -->
+			<p>ctrl.asadosArray</p>
+			{{ctrl.asadosArray | json}}
+			<hr/>
+			<p>ctrl.asadosObject</p>
+			{{ctrl.asadosObject | json}}
+			
     </div>
 
 		<!-- Angular -->
