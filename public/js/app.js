@@ -80,6 +80,10 @@
             console.log('se arrepintió');
           });
         }
+        
+        vm.borrarParticipante = function() {
+
+        }
       }]);
 
 })();
