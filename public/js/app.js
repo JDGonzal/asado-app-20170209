@@ -9,11 +9,11 @@
         vm.nuevoAsado = function () {
 
           var confirm = $mdDialog.prompt()
-                          .title('¿Cuál es el nombre del asado?')
-                          .placeholder('Asao Peruano!')
-                          .targetEvent()
-                          .ok('Seguir')
-                          .cancel('Me arrepentí');
+              .title('¿Cuál es el nombre del asado?')
+              .placeholder('Asao Peruano!')
+              .targetEvent()
+              .ok('Seguir')
+              .cancel('Me arrepentí');
 
           $mdDialog.show(confirm).then(function (nombre) {
             crearAsado(nombre);
@@ -49,18 +49,24 @@
           vm.asadoActual = asado;
 					asado.haSidoVisto = true;
 					vm.asadosArray.$save(asado);
-				};
-				
-				vm.anadirParticipante = function(){
-					var confirm = $mdDialog.prompt()
-							.title('¿Cuál es el nombre del participante?')
-							.placeholder('Nombre del participante')
-							.targetEvent()
-							.ok('Seguir')
-							.cancel('Me arrepentí');
+          
+          var refParticipantes = ref.child(vm.asadoActual.$id).child('participantes');
+          vm.participantes = $firebaseArray(refParticipantes);
 
-					$mdDialog.show(confirm).then(function (nombre) {
-						var refParticipantes = ref.child(vm.asadoActual.$id);
+          var refMateriales = ref.child(vm.asadoActual.$id).child('materiales');
+          vm.materiales = $firebaseArray(refMateriales);
+        };
+				
+        vm.anadirParticipante = function(){
+          var confirm = $mdDialog.prompt()
+              .title('¿Cuál es el nombre del participante?')
+              .placeholder('Nombre del participante')
+              .targetEvent()
+              .ok('Seguir')
+              .cancel('Me arrepentí');
+
+          $mdDialog.show(confirm).then(function (nombre) {
+            var refParticipantes = ref.child(vm.asadoActual.$id);
             var asado = $firebaseObject(refParticipantes);
             asado.$loaded().then(() => {
               if (!asado.participantes) {
@@ -69,7 +75,7 @@
                     nombre: nombre
                   }
                 ];
-                } else {
+              } else {
                 asado.participantes.push({
                   nombre: nombre
                 });
@@ -81,8 +87,8 @@
           });
         }
         
-        vm.borrarParticipante = function() {
-
+        vm.anadirMaterial = function() {
+          console.log('Voy a anadir un material');
         }
       }]);
 
